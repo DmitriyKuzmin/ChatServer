@@ -1,16 +1,18 @@
 package com.kdp;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 
 /**
- *
+ * Поток запуска сервера чата
  */
-class ChatServerThread extends Thread{
+class ChatServerThread extends Thread {
 
     /**
-     *
+     *  Создаёт сервер-Сокет, и ждёт входа клиента.
+     *  Когда клиет заходит, добавляет его в список и запускает поток по работе с клиентом.
      */
     @Override
     public void run() {
@@ -31,8 +33,8 @@ class ChatServerThread extends Thread{
                 //
                 Main.userList.add(client);
                 //
-                ConnectThread connectThread = new ConnectThread(client, socket);
-                connectThread.start();
+                ClientThread clientThread = new ClientThread(client, socket);
+                clientThread.start();
             }
 
         } catch (IOException e) {

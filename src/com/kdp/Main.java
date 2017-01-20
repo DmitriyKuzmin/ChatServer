@@ -8,15 +8,13 @@ import java.util.Enumeration;
 import java.util.List;
 
 
-/**
- *
- */
+
 public class Main {
 
-    //
+    //Список пользователей, которые подключены
     static List<ChatClient> userList;
 
-    //
+    //Порт для сокета
     static final int SocketServerPORT = 8080;
 
 
@@ -25,31 +23,36 @@ public class Main {
     }
 
 
-    /**
-     *
-     */
     private Main() {
         System.out.print(getIpAddress());
         userList = new ArrayList<>();
-        ChatServerThread chatServerThread = new ChatServerThread();
-        chatServerThread.start();
+
+        //Создаём поток сервера чата
+        new ChatServerThread().start();
     }
 
     /**
+     * Метод находит локальный ip-адрес, к которому можно подключиться с андроида
      *
-     * @return
+     * @return - локальный ip-адрес, к которому можно подключиться через android
      */
     private static String getIpAddress() {
         String ip = "";
         try {
+
+            //Все интерфейсы на этой машине
             Enumeration<NetworkInterface> enumNetworkInterfaces = NetworkInterface.getNetworkInterfaces();
             while (enumNetworkInterfaces.hasMoreElements()) {
                 NetworkInterface networkInterface = enumNetworkInterfaces.nextElement();
+                //Все доступные адреса
                 Enumeration<InetAddress> enumInetAddress = networkInterface.getInetAddresses();
                 while (enumInetAddress.hasMoreElements()) {
                     InetAddress inetAddress = enumInetAddress.nextElement();
 
+                    //Есть ли доступные локальные адреса
                     if (inetAddress.isSiteLocalAddress()) {
+
+                        //строка IP-адреса  в текстовом представлении
                         ip += "SiteLocalAddress: " + inetAddress.getHostAddress() + "\n";
                     }
                 }

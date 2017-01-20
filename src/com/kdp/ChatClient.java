@@ -4,35 +4,35 @@ import java.net.Socket;
 
 
 /**
- *
+ * Класс по работе с клиентами чата.
  */
 class ChatClient {
-
     private String name;
     private Socket socket;
-    private ConnectThread chatThread;
+    //Поток клиента
+    private ClientThread chatThread;
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public Socket getSocket() {
+    Socket getSocket() {
         return socket;
     }
 
-    public ConnectThread getChatThread() {
+    ClientThread getChatThread() {
         return chatThread;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
-    public void setSocket(Socket socket) {
+    void setSocket(Socket socket) {
         this.socket = socket;
     }
 
-    public void setChatThread(ConnectThread chatThread) {
+    void setChatThread(ClientThread chatThread) {
         this.chatThread = chatThread;
     }
 }
