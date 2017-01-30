@@ -21,9 +21,6 @@ class ClientThread extends Thread {
     //Сообщение клиента, которое потом отсылается остальным клиентам
     private String msgToSend = "";
 
-    //Сообщение клиента, которое выводится в консоль
-    private String msgLog = "";
-
     /**
      * Конструктор Клинт-Потока
      *
@@ -46,6 +43,7 @@ class ClientThread extends Thread {
         DataInputStream dataInputStream = null;
         DataOutputStream dataOutputStream = null;
 
+        String msgLog;
         try {
             //Создаём входной и выходной поток
             dataInputStream = new DataInputStream(socket.getInputStream());
@@ -57,10 +55,8 @@ class ClientThread extends Thread {
             //Устанавливаем имя пользователя
             connectClient.setName(n);
 
-            //Информация в консоль по подключению пользователя
-            msgLog = connectClient.getName() + " connected@"
-                    + connectClient.getSocket().getInetAddress()
-                    + ":" + connectClient.getSocket().getPort() + "\n";
+            
+            msgLog = connectClient.getName() + " connected@" + connectClient.getSocket().getInetAddress() + ":" + connectClient.getSocket().getPort() + "\n";
             System.out.println(msgLog);
 
 
@@ -153,10 +149,7 @@ class ClientThread extends Thread {
     private void broadcastMsg(String msg) {
         for (ChatClient anUserList : Main.userList) {
             anUserList.getChatThread().sendMsg(msg);
-            System.out.print(msgLog);
         }
-
-        System.out.println();
 
     }
 }
