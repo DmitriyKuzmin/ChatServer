@@ -14,7 +14,6 @@ java -classpath ./out com.kdp.Main
 
 Пример данных при запуске:
 ```
-SiteLocalAddress: 192.168.56.1
 SiteLocalAddress: 192.168.43.186
 I'm waiting here: 8080
 CTRL + C to quit
