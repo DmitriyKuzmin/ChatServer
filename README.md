@@ -6,3 +6,4 @@
 javac -sourcepath ./src -d out src/com/kdp/Main.java
 java -classpath ./out com.kdp.Main
 ```
+Клиент этого чата доступен по ссылке [https://github.com/DmitriyKuzmin/ChatClient]
