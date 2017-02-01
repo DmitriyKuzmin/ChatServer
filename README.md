@@ -28,6 +28,6 @@ CTRL + C to quit
 ```
 При дисконнекте клиента выводится сообщения типа:
 ``` 
--- <Имя клиента> logged out
+<Имя клиента> logged
 ```
 Клиент этого чата доступен по ссылке [https://github.com/DmitriyKuzmin/ChatClient]
